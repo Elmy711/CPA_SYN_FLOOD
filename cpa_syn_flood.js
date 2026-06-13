@@ -22,10 +22,11 @@ const colors = {
     magenta: '\x1b[35m',
     cyan: '\x1b[36m',
     white: '\x1b[37m',
+    bright: '\x1b[1m',
     reset: '\x1b[0m'
 };
 
-// ========== BANNER 2 BARIS ==========
+// ========== BANNER 2 BARIS (TANPA UNDEFINED) ==========
 const banner = `
 ${colors.red}╔══════════════════════════════════════════════════════════════╗${colors.reset}
 ${colors.red}║${colors.white}                    ██████╗██████╗  █████╗                     ${colors.red}║${colors.reset}
@@ -33,8 +34,8 @@ ${colors.red}║${colors.white}                   ██╔════╝██
 ${colors.red}║${colors.cyan}                           ██████╔╝███████║                        ${colors.red}║${colors.reset}
 ${colors.red}║${colors.cyan}                           ╚═════╝ ╚══════╝                        ${colors.red}║${colors.reset}
 ${colors.red}╠══════════════════════════════════════════════════════════════╣${colors.reset}
-${colors.red}║${colors.yellow}                           ${colors.white}${colors.bold}CPA SYN${colors.reset}${colors.yellow}                            ${colors.red}║${colors.reset}
-${colors.red}║${colors.yellow}                           ${colors.white}${colors.bold}FLOOD${colors.reset}${colors.yellow}                             ${colors.red}║${colors.reset}
+${colors.red}║${colors.yellow}${colors.bright}                           CPA SYN${colors.reset}${colors.red}                            ║${colors.reset}
+${colors.red}║${colors.yellow}${colors.bright}                            FLOOD${colors.reset}${colors.red}                             ║${colors.reset}
 ${colors.red}╚══════════════════════════════════════════════════════════════╝${colors.reset}
 ${colors.magenta}              🔥 Ethical Security Testing Tool 🔥${colors.reset}
 ${colors.red}         ⚠️  FOR EDUCATIONAL PURPOSES ONLY ⚠️${colors.reset}
@@ -65,7 +66,7 @@ function showStats() {
     const elapsed = (Date.now() - startTime) / 1000;
     const pps = Math.floor(packetCount / elapsed);
     
-    process.stdout.write(`\r${colors.yellow}📊 STATS: Packets: ${packetCount} | PPS: ${pps} | Duration: ${elapsed.toFixed(1)}s${colors.reset}`);
+    process.stdout.write(`\r${colors.yellow}📊 STATS: Packets: ${packetCount.toLocaleString()} | PPS: ${pps.toLocaleString()} | Duration: ${elapsed.toFixed(1)}s${colors.reset}`);
 }
 
 // ========== SERANGAN TCP SYN ==========
@@ -226,13 +227,6 @@ async function main() {
     
     if (threads < 1 || threads > 500) {
         log('Threads harus antara 1-500!', 'error');
-        process.exit(1);
-    }
-    
-    // Cek koneksi
-    const hasInternet = await checkInternet();
-    if (!hasInternet) {
-        log('Pastikan koneksi internet aktif!', 'error');
         process.exit(1);
     }
     
