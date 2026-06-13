@@ -1,0 +1,26 @@
+{
+  "name": "cpa-syn-flood",
+  "version": "2.0.0",
+  "description": "CPA SYN FLOOD - Ethical Network Security Testing Tool",
+  "main": "cpa_syn_flood.js",
+  "bin": {
+    "cpa-syn-flood": "./cpa_syn_flood.js"
+  },
+  "scripts": {
+    "start": "node cpa_syn_flood.js",
+    "test": "node cpa_syn_flood.js --help"
+  },
+  "keywords": [
+    "security",
+    "network",
+    "testing",
+    "syn-flood",
+    "ddos",
+    "ethical-hacking"
+  ],
+  "author": "CPA Security Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
